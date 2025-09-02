@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Notes App with Next.js (App Router)
 
-## Getting Started
+A simple Notes App built using **Next.js (App Router)**. This app includes CRUD functionality (Create, Read, Update, Delete) for managing notes and uses **Prisma** ORM with a **PostgreSQL** database for data storage.
 
-First, run the development server:
+---
+
+## Features
+- Create, read, update, and delete notes.
+- Responsive design with a simple and clean UI.
+- JWT-based authentication.
+- Easy deployment with Vercel or other cloud platforms.
+
+---
+
+## Tech Stack
+- **Frontend**: Next.js (App Router)
+- **Backend**: Next.js API Routes
+- **Database**: PostgreSQL (with Prisma ORM)
+- **Authentication**: JWT (JSON Web Token)
+- **CSS Framework**: Tailwind CSS (or optional custom styling)
+
+---
+
+## Project Setup
+
+### Prerequisites
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (version 14 or above)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/) or npm
+- [PostgreSQL](https://www.postgresql.org/) (or use a cloud database like ElephantSQL)
+- [Prisma](https://www.prisma.io/)
+
+---
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/nextjs-notes-app.git
+cd nextjs-notes-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3.Set Up Environment Variables
+```bash 
+DATABASE_URL="postgresql://<USER>:<PASSWORD>@<HOST>:<PORT>/<DATABASE_NAME>?schema=public"
+JWT_SECRET="your-jwt-secret"
+```
+### 4.Set Up Prisma and Migrate Database
+```bash 
+npx prisma migrate dev --name init
+```
+### 5. Run the Development Server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+# Authentication
 
-To learn more about Next.js, take a look at the following resources:
+This application uses JWT-based authentication.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Sample User Credentials:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Username: Test123@gmail.com
+Password: 123456
 
-## Deploy on Vercel
+These credentials are pre-configured for testing. You can authenticate the user through the app's login form, and once logged in, you can perform CRUD operations on notes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
