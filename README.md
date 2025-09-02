@@ -66,6 +66,7 @@ This application uses JWT-based authentication.
 Sample User Credentials:
 
 Username: Test123@gmail.com
+
 Password: 123456
 
 These credentials are pre-configured for testing. You can authenticate the user through the app's login form, and once logged in, you can perform CRUD operations on notes.
