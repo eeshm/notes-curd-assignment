@@ -8,24 +8,37 @@ export default function Navbar() {
   const router = useRouter();
 
   useEffect(() => {
-    // Check login status on mount
-    const loginStatus = localStorage.getItem('token') === 'true';
-    setIsLoggedIn(loginStatus);
+    const checkLoginStatus = () => {
+      const token = localStorage.getItem('token');
+      setIsLoggedIn(!!token); // Sets true if token exists
+    };
+
+    checkLoginStatus();
+
+    // Listen for localStorage changes from other tabs
+    window.addEventListener('storage', checkLoginStatus);
+
+    return () => {
+      window.removeEventListener('storage', checkLoginStatus);
+    };
   }, []);
 
-  function handleLogout() {
-    localStorage.removeItem('token');
-    router.push('/login');
-  }
+
+function handleLogout() {
+  localStorage.removeItem('token');
+  setIsLoggedIn(false); // immediately update UI
+  router.push('/login');
+}
+
 
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
   return (
-    <nav className="bg-black/90 p-4 flex justify-between items-center sticky top-0">
-      <Link href="/notes" className="font-bold text-white text-2xl hover:text-yellow-300 transition-colors duration-300">
+    <nav className=" bg-gradient-to-br from-gray-50 via-white  border-b-2 p-4 flex justify-between items-center ">
+      <Link href="/notes" className="font-bold text-black text-2xl hover:text-yellow-300 transition-colors duration-300">
         Thoughts and Notes
       </Link>
-      
+
       {/* Conditional render for login/logout */}
       {isLoggedIn ? (
         <button
@@ -35,7 +48,7 @@ export default function Navbar() {
           Logout
         </button>
       ) : (
-        <Link href="/login" className="text-white text-lg hover:text-yellow-300 underline transition-colors duration-300">
+        <Link href="/login" className="text-white bg-black text-lg hover:text-yellow-300 underline transition-colors duration-300">
           Login
         </Link>
       )}

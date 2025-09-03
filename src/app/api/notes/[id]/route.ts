@@ -150,7 +150,7 @@ export async function DELETE(
 
   // Authentication
   const authHeader = request.headers.get('authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
+  if (!authHeader?.startsWith('Bearer')) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: 401 }
@@ -169,7 +169,6 @@ export async function DELETE(
     await prisma.note.delete({ where: { id } });
     return NextResponse.json({ message: 'Note deleted successfully' });
   } catch (error) {
-    // If note does not exist, Prisma throws an error
     return NextResponse.json(
       { error: 'Note not found' },
       { status: 404 }

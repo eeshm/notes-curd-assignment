@@ -38,10 +38,10 @@ export default function NotePage() {
       <h1 className="text-3xl font-bold">{note?.title}</h1>
       <p className="mt-4 whitespace-pre-wrap">{note?.content}</p>
       <div className="mt-6 space-x-4">
-        <Link href={`/notes/edit/${id}`} className="text-blue-600 underline">
+        <Link href={`/notes/edit/${id}`} className="text-black underline">
           Edit
         </Link>
-        <Link href="/notes" className="text-gray-600 underline">
+        <Link href="/notes" className="text-black underline">
           Back to list
         </Link>
       </div>
